@@ -1,0 +1,31 @@
+It is not possible to select the first second third ..... element in a class by class name
+
+This it not possible to use the CSS3 selector :first-of-type to select the first element with a given class name.
+
+<!-- Is it possible to use the CSS3 selector :first-of-type to select the first element with a given class name? I haven't been successful with my test so I'm thinking it's not?
+
+The Code (http://jsfiddle.net/YWY4L/): -->
+
+
+<div>
+  <div>This text should appear as normal</div>
+  <p>This text should be blue.</p>
+  <p class="myclass1">This text should appear red.</p>
+  <p class="myclass2">This text should appear green.</p>
+</div>
+
+<style type="text/css">
+	p:first-of-type {color:blue}
+p.myclass1:first-of-type {color:red}
+.myclass2:first-of-type {color:green}
+</style>
+
+
+<!-- No, it's not possible using just one selector. The :first-of-type pseudo-class selects the first element of its type (div, p, etc). Using a class selector (or a type selector) with that pseudo-class means to select an element if it has the given class (or is of the given type) and is the first of its type among its siblings.
+ -->
+<!-- Unfortunately, CSS doesn't provide a :first-of-class selector that only chooses the first occurrence of a class. As a workaround, you can use something like this:
+ -->
+ <style type="text/css">
+.myclass1 { color: red; }
+.myclass1 ~ .myclass1 { color: /* default, or inherited from parent div */; }
+</style>
